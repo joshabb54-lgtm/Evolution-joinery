@@ -32,7 +32,7 @@
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 200;
     padding: 1.25rem 3.5rem;
     display: flex;
     justify-content: space-between;
@@ -48,6 +48,8 @@
     align-items: center;
     gap: 0.75rem;
     text-decoration: none;
+    position: relative;
+    z-index: 201;
   }
 
   .nav-brand-top {
@@ -70,7 +72,9 @@
   .nav-right {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 201;
   }
 
   .nav-hours {
@@ -97,6 +101,108 @@
   }
 
   .nav-call:hover { background: var(--pine-light); }
+
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+    position: relative;
+    z-index: 201;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    height: 1.5px;
+    background: var(--cream);
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    transform-origin: center;
+  }
+
+  .nav-hamburger span:nth-child(2) { width: 70%; margin-left: auto; }
+
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* DROPDOWN MENU */
+  .nav-menu {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(10,22,40,0.98);
+    backdrop-filter: blur(16px);
+    z-index: 199;
+    padding: 6rem 3.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-bottom: 1px solid rgba(184,114,42,0.2);
+  }
+
+  .nav-menu.open {
+    transform: translateY(0);
+  }
+
+  .nav-menu-link {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: rgba(244,240,234,0.5);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(184,114,42,0.1);
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-menu-link:last-child { border-bottom: none; }
+
+  .nav-menu-link:hover,
+  .nav-menu-link.active { color: var(--cream); }
+
+  .nav-menu-link.active::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--pine);
+    flex-shrink: 0;
+  }
+
+  .nav-menu-footer {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-menu-footer a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pine);
+    text-decoration: none;
+  }
+
+  .nav-menu-footer span {
+    font-size: 0.75rem;
+    color: rgba(244,240,234,0.35);
+    letter-spacing: 0.05em;
+  }
 
   /* HERO */
   .hero {
@@ -759,8 +865,7 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-brand" href="#">
-    <!-- E logo mark -->
+  <a class="nav-brand" href="index.html">
     <svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg" aria-label="Evolution Joinery">
       <circle cx="21" cy="21" r="19.5" fill="none" stroke="#B8722A" stroke-width="1.5"/>
       <text x="21" y="27.5" text-anchor="middle"
@@ -775,16 +880,24 @@
     </div>
   </a>
   <div class="nav-right">
-    <nav style="display:flex;align-items:center;gap:1.8rem;">
-      <a style="font-size:0.78rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,234,0.6);text-decoration:none;transition:color 0.2s;" href="#">Home</a>
-      <a style="font-size:0.78rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,234,0.6);text-decoration:none;transition:color 0.2s;" href="#services">Services</a>
-      <a style="font-size:0.78rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:#B8722A;text-decoration:none;" href="our-work.html">Our Work</a>
-      <a style="font-size:0.78rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,234,0.6);text-decoration:none;transition:color 0.2s;" href="#contact">Contact</a>
-    </nav>
-    <span class="nav-hours">Open today until <strong>8 pm</strong></span>
     <a class="nav-call" href="tel:07825270874">07825 270874</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- FULLSCREEN MENU -->
+<div class="nav-menu" id="navMenu">
+  <a class="nav-menu-link active" href="index.html">Home</a>
+  <a class="nav-menu-link" href="index.html#services">Services</a>
+  <a class="nav-menu-link" href="our-work.html">Our Work</a>
+  <a class="nav-menu-link" href="index.html#contact">Contact</a>
+  <div class="nav-menu-footer">
+    <a href="tel:07825270874">07825 270874</a>
+    <span>13 Low Moor Ave, Fulford, York YO10 4NH</span>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1008,6 +1121,24 @@
 </footer>
 
 <script>
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('navMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMenu.classList.toggle('open');
+    document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Close on link click
+  navMenu.querySelectorAll('.nav-menu-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
   function handleSubmit(btn) {
     const original = btn.textContent;
     btn.textContent = 'Enquiry Sent';
