@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work -- Evolution Joinery, York</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0A1628;
+    --pine: #B8722A;
+    --pine-light: #CF8A3E;
+    --pine-pale: #EEE8DF;
+    --cream: #F4F0EA;
+    --warm-grey: #7A7A8C;
+    --stone: #C8C2B8;
+    --gold: #B8722A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,22,40,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(184,114,42,0.2);
+  }
+
+  .nav-brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .nav-brand-top {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .nav-brand-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pine);
+    font-weight: 500;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+  }
+
+  .nav-link {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(244,240,234,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover,
+  .nav-link.active { color: var(--pine); }
+
+  .nav-hours {
+    font-size: 0.75rem;
+    color: rgba(244,240,234,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-hours strong {
+    color: var(--pine);
+    font-weight: 500;
+  }
+
+  .nav-call {
+    background: var(--pine);
+    color: var(--cream);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.7rem 1.6rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-call:hover { background: var(--pine-light); }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: var(--ink);
+    padding: 8rem 3.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero-grain {
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .page-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  .page-hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+
+  .page-hero-eyebrow-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .page-hero-eyebrow span {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .page-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.25s forwards;
+  }
+
+  .page-hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .page-hero-desc {
+    margin-top: 1.8rem;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(244,240,234,0.55);
+    line-height: 1.75;
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.4s forwards;
+  }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    background: var(--pine);
+    overflow: hidden;
+    padding: 0.85rem 0;
+    white-space: nowrap;
+  }
+
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 22s linear infinite;
+  }
+
+  .marquee-track span {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    font-weight: 400;
+    padding: 0 2rem;
+  }
+
+  .marquee-track span.dot {
+    color: var(--ink);
+    padding: 0;
+    letter-spacing: 0;
+    font-size: 0.9rem;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* GALLERY */
+  .gallery-section {
+    padding: 5rem 3.5rem 6rem;
+    background: var(--cream);
+  }
+
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    gap: 2rem;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pine);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--pine);
+  }
+
+  .gallery-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.05;
+  }
+
+  .gallery-title em {
+    font-style: italic;
+    color: var(--pine);
+  }
+
+  .gallery-count {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--warm-grey);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  /* MASONRY GRID */
+  .gallery-grid {
+    columns: 3;
+    column-gap: 12px;
+  }
+
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,22,40,0.7) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.2rem;
+  }
+
+  .gallery-item-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(244,240,234,0.85);
+    font-weight: 400;
+  }
+
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(10,22,40,0.96);
+    backdrop-filter: blur(12px);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox-inner {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .lightbox img {
+    max-width: 80vw;
+    max-height: 85vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: rgba(244,240,234,0.6);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  .lightbox-close:hover { color: var(--pine); }
+
+  .lightbox-nav {
+    background: none;
+    border: 1px solid rgba(244,240,234,0.2);
+    color: rgba(244,240,234,0.7);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+  }
+
+  .lightbox-nav:hover {
+    border-color: var(--pine);
+    color: var(--pine);
+  }
+
+  .lightbox-counter {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(244,240,234,0.4);
+  }
+
+  /* CTA STRIP */
+  .cta-strip {
+    background: var(--ink);
+    padding: 5rem 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(184,114,42,0.15);
+  }
+
+  .cta-strip-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.05;
+  }
+
+  .cta-strip-left h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .cta-strip-left p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(244,240,234,0.5);
+    line-height: 1.7;
+    max-width: 400px;
+  }
+
+  .btn-pine {
+    background: var(--pine);
+    color: var(--cream);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2.2rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-pine:hover {
+    background: var(--pine-light);
+    transform: translateY(-1px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #060D1A;
+    padding: 2rem 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid rgba(184,114,42,0.15);
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: rgba(184,114,42,0.6);
+    letter-spacing: 0.06em;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: rgba(244,240,234,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-hours { display: none; }
+    .nav-links { display: none; }
+    .page-hero { padding: 6rem 1.5rem 3rem; }
+    .gallery-section { padding: 3rem 1.5rem 4rem; }
+    .gallery-grid { columns: 2; }
+    .gallery-header { flex-direction: column; align-items: flex-start; }
+    .cta-strip { padding: 3.5rem 1.5rem; flex-direction: column; }
+    footer { padding: 2rem 1.5rem; }
+  }
+
+  @media (max-width: 560px) {
+    .gallery-grid { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="evolution-kitchens.html">
+    <svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg" aria-label="Evolution Joinery">
+      <circle cx="21" cy="21" r="19.5" fill="none" stroke="#B8722A" stroke-width="1.5"/>
+      <text x="21" y="27.5" text-anchor="middle"
+            font-family="Cormorant Garamond, serif"
+            font-size="22" font-weight="600"
+            fill="#B8722A"
+            letter-spacing="0">E</text>
+    </svg>
+    <div style="display:flex;flex-direction:column;gap:1px;">
+      <span class="nav-brand-top">Evolution Joinery</span>
+      <span class="nav-brand-sub">Kitchen Fitting, York</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <nav class="nav-links">
+      <a class="nav-link" href="evolution-kitchens.html">Home</a>
+      <a class="nav-link" href="evolution-kitchens.html#services">Services</a>
+      <a class="nav-link active" href="our-work.html">Our Work</a>
+      <a class="nav-link" href="evolution-kitchens.html#contact">Contact</a>
+    </nav>
+    <span class="nav-hours">Open today until <strong>8 pm</strong></span>
+    <a class="nav-call" href="tel:07825270874">07825 270874</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-grain"></div>
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">
+      <div class="page-hero-eyebrow-line"></div>
+      <span>Portfolio &mdash; York &amp; Surrounding Area</span>
+    </div>
+    <h1>Our <em>work</em></h1>
+    <p class="page-hero-desc">A selection of kitchens we have fitted across York and the surrounding area. Every project is different. Every finish is one we are proud to put our name to.</p>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Kitchen Fitting</span><span class="dot">&middot;</span>
+    <span>Cabinet Installation</span><span class="dot">&middot;</span>
+    <span>Worktop Fitting</span><span class="dot">&middot;</span>
+    <span>Utility Rooms</span><span class="dot">&middot;</span>
+    <span>Bespoke Cabinetry</span><span class="dot">&middot;</span>
+    <span>Appliance Integration</span><span class="dot">&middot;</span>
+    <span>Kitchen Renovations</span><span class="dot">&middot;</span>
+    <span>Kitchen Fitting</span><span class="dot">&middot;</span>
+    <span>Cabinet Installation</span><span class="dot">&middot;</span>
+    <span>Worktop Fitting</span><span class="dot">&middot;</span>
+    <span>Utility Rooms</span><span class="dot">&middot;</span>
+    <span>Bespoke Cabinetry</span><span class="dot">&middot;</span>
+    <span>Appliance Integration</span><span class="dot">&middot;</span>
+    <span>Kitchen Renovations</span><span class="dot">&middot;</span>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="gallery-header">
+    <div>
+      <p class="section-label">Completed Projects</p>
+      <h2 class="gallery-title">Kitchens we're <em>proud of</em></h2>
+    </div>
+    <p class="gallery-count">14 projects shown</p>
+  </div>
+
+  <div class="gallery-grid" id="gallery">
+
+    <div class="gallery-item" onclick="openLightbox(0)">
+      <img src="452382308_18010320020544834_4017173284253142732_n.jpg" alt="Grey gloss kitchen with island and marble worktop, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Grey Gloss &amp; Marble Island</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(1)">
+      <img src="457344775_18014565575544834_1132467767863330868_n.jpg" alt="White gloss handleless kitchen with quartz worktop, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">White Gloss Handleless</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(2)">
+      <img src="464168361_18020962757544834_4721668071328900429_n.jpg" alt="Contemporary kitchen with island sink and dark cabinetry, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Dark Cabinetry &amp; Island Sink</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(3)">
+      <img src="464887349_18021776699544834_2583093613747201882_n.jpg" alt="Sage green shaker kitchen with parquet floor and brass hardware, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Sage Shaker &amp; Brass Hardware</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(4)">
+      <img src="467628513_18024394919544834_445752475839821846_n.jpg" alt="Navy blue and white shaker kitchen with island hob, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Navy Shaker &amp; Quartz Island</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(5)">
+      <img src="468097574_18024644843544834_3668250818064369256_n.jpg" alt="Forest green shaker kitchen with brass handles and farmhouse sink, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Forest Green &amp; Farmhouse Sink</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(6)">
+      <img src="469145746_18026190074544834_352942520560898735_n.jpg" alt="Dark shaker kitchen with marble worktop and black appliances, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Dark Shaker &amp; Marble Worktop</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(7)">
+      <img src="470897540_18027700643544834_8893233307923152767_n.jpg" alt="Grey shaker kitchen with green metro tiles and quartz worktop, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Grey Shaker &amp; Metro Tile</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(8)">
+      <img src="485301608_1057394389753661_3933645413428770617_n.jpg" alt="Cream shaker kitchen with double oven and black and white floor, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Cream Shaker &amp; Double Oven</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(9)">
+      <img src="486506964_1060744862751947_6540039343603793434_n.jpg" alt="Dark utility room with Belfast sink and oak worktop, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Dark Utility &amp; Belfast Sink</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(10)">
+      <img src="487278627_18038837075544834_3992620968880134067_n.jpg" alt="Modern dark kitchen installation in progress with American fridge, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Modern Dark Kitchen Install</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(11)">
+      <img src="530971010_18052051607544834_4824562385768751709_n.jpg" alt="Old kitchen before renovation showing scope of work, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Before Renovation</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(12)">
+      <img src="584406231_18063779219544834_1607549617789650124_n.jpg" alt="Graphite grey handleless kitchen with island and integrated appliances, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Graphite Handleless &amp; Island</span></div>
+    </div>
+
+    <div class="gallery-item" onclick="openLightbox(13)">
+      <img src="587317823_18063779186544834_8060364794627632675_n.jpg" alt="Graphite handleless kitchen wide angle view with island, York" loading="lazy">
+      <div class="gallery-item-overlay"><span class="gallery-item-label">Graphite Handleless &amp; Island</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <div class="lightbox-inner">
+    <button class="lightbox-nav" onclick="changeImage(-1)">&#8592;</button>
+    <img id="lightbox-img" src="" alt="">
+    <button class="lightbox-nav" onclick="changeImage(1)">&#8594;</button>
+  </div>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="cta-strip-left">
+    <h2>Like what<br>you <em>see?</em></h2>
+    <p>Get in touch for a free, no-obligation quote. We work across York and the surrounding area and are currently accepting new enquiries.</p>
+  </div>
+  <a class="btn-pine" href="evolution-kitchens.html#contact">Request a Free Quote</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Evolution Joinery</span>
+  <p>13 Low Moor Ave, Fulford, York YO10 4NH</p>
+  <p>07825 270874</p>
+</footer>
+
+<script>
+  const images = [
+    { src: "452382308_18010320020544834_4017173284253142732_n.jpg", label: "Grey Gloss & Marble Island" },
+    { src: "457344775_18014565575544834_1132467767863330868_n.jpg", label: "White Gloss Handleless" },
+    { src: "464168361_18020962757544834_4721668071328900429_n.jpg", label: "Dark Cabinetry & Island Sink" },
+    { src: "464887349_18021776699544834_2583093613747201882_n.jpg", label: "Sage Shaker & Brass Hardware" },
+    { src: "467628513_18024394919544834_445752475839821846_n.jpg", label: "Navy Shaker & Quartz Island" },
+    { src: "468097574_18024644843544834_3668250818064369256_n.jpg", label: "Forest Green & Farmhouse Sink" },
+    { src: "469145746_18026190074544834_352942520560898735_n.jpg", label: "Dark Shaker & Marble Worktop" },
+    { src: "470897540_18027700643544834_8893233307923152767_n.jpg", label: "Grey Shaker & Metro Tile" },
+    { src: "485301608_1057394389753661_3933645413428770617_n.jpg", label: "Cream Shaker & Double Oven" },
+    { src: "486506964_1060744862751947_6540039343603793434_n.jpg", label: "Dark Utility & Belfast Sink" },
+    { src: "487278627_18038837075544834_3992620968880134067_n.jpg", label: "Modern Dark Kitchen Install" },
+    { src: "530971010_18052051607544834_4824562385768751709_n.jpg", label: "Before Renovation" },
+    { src: "584406231_18063779219544834_1607549617789650124_n.jpg", label: "Graphite Handleless & Island" },
+    { src: "587317823_18063779186544834_8060364794627632675_n.jpg", label: "Graphite Handleless & Island" },
+  ];
+
+  let current = 0;
+
+  function openLightbox(index) {
+    current = index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeLightboxOnBg(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+
+  function changeImage(dir) {
+    current = (current + dir + images.length) % images.length;
+    updateLightbox();
+  }
+
+  function updateLightbox() {
+    const img = document.getElementById('lightbox-img');
+    img.style.opacity = 0;
+    setTimeout(() => {
+      img.src = images[current].src;
+      img.alt = images[current].label;
+      img.style.opacity = 1;
+    }, 120);
+    document.getElementById('lightbox-counter').textContent = (current + 1) + ' / ' + images.length;
+  }
+
+  document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') changeImage(1);
+    if (e.key === 'ArrowLeft') changeImage(-1);
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Animate gallery items on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.gallery-item').forEach((item, i) => {
+    item.style.opacity = 0;
+    item.style.transform = 'translateY(20px)';
+    item.style.transition = `opacity 0.5s ${i * 0.05}s ease, transform 0.5s ${i * 0.05}s ease`;
+    observer.observe(item);
+  });
+
+  // Lightbox image fade transition
+  document.getElementById('lightbox-img').style.transition = 'opacity 0.12s ease';
+</script>
+
+</body>
+</html>

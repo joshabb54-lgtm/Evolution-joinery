@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolution Joinery -- Fulford, York</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0A1628;
+    --pine: #B8722A;
+    --pine-light: #CF8A3E;
+    --pine-pale: #EEE8DF;
+    --cream: #F4F0EA;
+    --warm-grey: #7A7A8C;
+    --stone: #C8C2B8;
+    --gold: #B8722A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,22,40,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(184,114,42,0.2);
+  }
+
+  .nav-brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .nav-brand-top {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .nav-brand-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pine);
+    font-weight: 500;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-hours {
+    font-size: 0.75rem;
+    color: rgba(244,240,234,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-hours strong {
+    color: var(--pine);
+    font-weight: 500;
+  }
+
+  .nav-call {
+    background: var(--pine);
+    color: var(--cream);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.7rem 1.6rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-call:hover { background: var(--pine-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding-top: 76px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grain {
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  /* Wood grain lines */
+  .hero-wood {
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        88deg,
+        rgba(184,146,74,0.04) 0px,
+        transparent 1px,
+        transparent 22px,
+        rgba(184,146,74,0.025) 22px,
+        transparent 23px,
+        transparent 50px
+      );
+    pointer-events: none;
+  }
+
+  .hero-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 3.5rem 3rem;
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+
+  .hero-eyebrow-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-eyebrow span {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  h1.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 8vw, 8.5rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.25s forwards;
+  }
+
+  h1.hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-desc {
+    margin-top: 2.5rem;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.75;
+    max-width: 460px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.45s forwards;
+  }
+
+  .hero-ctas {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.6s forwards;
+  }
+
+  .btn-pine {
+    background: var(--pine);
+    color: var(--cream);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2.2rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-pine:hover {
+    background: var(--pine-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: rgba(245,240,232,0.7);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid rgba(245,240,232,0.3);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  /* Hero bottom bar */
+  .hero-bar {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid rgba(245,240,232,0.08);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero-bar-item {
+    padding: 1.8rem 3.5rem;
+    border-right: 1px solid rgba(245,240,232,0.08);
+    opacity: 0;
+    animation: fadeUp 0.5s forwards;
+  }
+
+  .hero-bar-item:last-child { border-right: none; }
+  .hero-bar-item:nth-child(1) { animation-delay: 0.7s; }
+  .hero-bar-item:nth-child(2) { animation-delay: 0.85s; }
+  .hero-bar-item:nth-child(3) { animation-delay: 1.0s; }
+
+  .hbi-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+  }
+
+  .hbi-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: rgba(245,240,232,0.85);
+    font-weight: 400;
+  }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    background: var(--pine);
+    overflow: hidden;
+    padding: 0.85rem 0;
+    white-space: nowrap;
+  }
+
+  .marquee-track {
+    display: inline-block;
+    animation: marquee 22s linear infinite;
+  }
+
+  .marquee-track span {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    font-weight: 400;
+    padding: 0 2rem;
+  }
+
+  .marquee-track span.dot {
+    color: var(--gold);
+    padding: 0;
+    letter-spacing: 0;
+    font-size: 0.9rem;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ABOUT */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #F2EEE8;
+  }
+
+  .about-left {
+    padding: 6rem 4rem;
+    border-right: 1px solid var(--stone);
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pine);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--pine);
+  }
+
+  .about-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  .about-heading em {
+    font-style: italic;
+    color: var(--pine);
+  }
+
+  .about-right {
+    padding: 6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .about-right p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--warm-grey);
+    line-height: 1.8;
+  }
+
+  .about-right p strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .about-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.4rem;
+    border: 1px solid var(--pine);
+    align-self: flex-start;
+  }
+
+  .about-badge span {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--pine);
+    font-weight: 500;
+  }
+
+  .badge-dot {
+    width: 8px; height: 8px;
+    background: var(--pine);
+    border-radius: 50%;
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--pine-pale);
+    padding: 6rem 4rem;
+  }
+
+  .services-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+    gap: 3rem;
+  }
+
+  .services-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.05;
+  }
+
+  .services-intro {
+    max-width: 340px;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--warm-grey);
+    line-height: 1.7;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: rgba(184,114,42,0.15);
+  }
+
+  .service-item {
+    background: var(--pine-pale);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--pine);
+    transition: width 0.3s ease;
+  }
+
+  .service-item:hover { background: white; }
+  .service-item:hover::after { width: 100%; }
+
+  .service-icon {
+    width: 36px; height: 36px;
+    background: var(--pine);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-icon svg {
+    width: 18px; height: 18px;
+    stroke: var(--cream);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--warm-grey);
+    line-height: 1.7;
+  }
+
+  /* WHY US */
+  .why {
+    background: var(--ink);
+    padding: 6rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .why-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.05;
+  }
+
+  .why-left h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 3rem;
+  }
+
+  .why-item {}
+
+  .why-item-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--pine-light);
+    line-height: 1;
+    margin-bottom: 0.6rem;
+  }
+
+  .why-item-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    margin-bottom: 0.5rem;
+  }
+
+  .why-item-desc {
+    font-size: 0.83rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.7;
+  }
+
+  /* CONTACT */
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contact-info {
+    background: var(--ink);
+    padding: 6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(184,114,42,0.2);
+  }
+
+  .contact-info h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.05;
+  }
+
+  .contact-info h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .contact-info p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.75;
+    max-width: 340px;
+    margin-top: 1.5rem;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .contact-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .cd-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    font-weight: 400;
+  }
+
+  .cd-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--cream);
+    font-weight: 400;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .cd-value:hover { opacity: 0.7; }
+
+  .cd-value-small {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.5;
+  }
+
+  .contact-form {
+    background: var(--cream);
+    padding: 6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.4rem;
+  }
+
+  .contact-form h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .field label {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pine);
+    font-weight: 500;
+  }
+
+  .field input,
+  .field textarea,
+  .field select {
+    background: white;
+    border: 1px solid var(--stone);
+    color: var(--ink);
+    padding: 0.85rem 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+    appearance: none;
+  }
+
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    border-color: var(--pine);
+  }
+
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: var(--stone);
+  }
+
+  .form-btn {
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    padding: 1rem 2.2rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.2s;
+  }
+
+  .form-btn:hover { background: var(--pine); }
+
+  /* FOOTER */
+  footer {
+    background: #060D1A;
+    padding: 2rem 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid rgba(184,114,42,0.15);
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: rgba(184,114,42,0.6);
+    letter-spacing: 0.06em;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: rgba(244,240,234,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-hours { display: none; }
+    .hero-main { padding: 3rem 1.5rem 2rem; }
+    .hero-bar { grid-template-columns: 1fr; }
+    .hero-bar-item { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.08); padding: 1.2rem 1.5rem; }
+    .about { grid-template-columns: 1fr; }
+    .about-left { border-right: none; border-bottom: 1px solid var(--stone); padding: 3rem 1.5rem; }
+    .about-right { padding: 3rem 1.5rem; }
+    .services { padding: 4rem 1.5rem; }
+    .services-top { flex-direction: column; align-items: flex-start; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2.5rem; }
+    .why-grid { grid-template-columns: 1fr; }
+    .contact { grid-template-columns: 1fr; }
+    .contact-info, .contact-form { padding: 3rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <!-- E logo mark -->
+    <svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg" aria-label="Evolution Joinery">
+      <circle cx="21" cy="21" r="19.5" fill="none" stroke="#B8722A" stroke-width="1.5"/>
+      <text x="21" y="27.5" text-anchor="middle"
+            font-family="Cormorant Garamond, serif"
+            font-size="22" font-weight="600"
+            fill="#B8722A"
+            letter-spacing="0">E</text>
+    </svg>
+    <div style="display:flex;flex-direction:column;gap:1px;">
+      <span class="nav-brand-top">Evolution Joinery</span>
+      <span class="nav-brand-sub">Kitchen Fitting, York</span>
+    </div>
+  </a>
+  <div class="nav-right">
+    <nav style="display:flex;align-items:center;gap:1.8rem;">
+      <a style="font-size:0.78rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,234,0.6);text-decoration:none;transition:color 0.2s;" href="#">Home</a>
+      <a style="font-size:0.78rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,234,0.6);text-decoration:none;transition:color 0.2s;" href="#services">Services</a>
+      <a style="font-size:0.78rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:#B8722A;text-decoration:none;" href="our-work.html">Our Work</a>
+      <a style="font-size:0.78rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,234,0.6);text-decoration:none;transition:color 0.2s;" href="#contact">Contact</a>
+    </nav>
+    <span class="nav-hours">Open today until <strong>8 pm</strong></span>
+    <a class="nav-call" href="tel:07825270874">07825 270874</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-wood"></div>
+  <div class="hero-main">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Kitchen Fitting Specialists, Fulford, York</span>
+    </div>
+    <h1 class="hero-title">Trusted<br>Kitchen<br><em>Renovater</em><br>based in York</h1>
+    <p class="hero-desc">Kitchen fitting and renovation for homes across York and the surrounding area. From full kitchen installs to bespoke cabinetry, fitted to a standard you can see.</p>
+    <div class="hero-ctas">
+      <a class="btn-pine" href="#contact">Request a Quote</a>
+      <a class="btn-ghost" href="#services">See our work</a>
+    </div>
+  </div>
+
+  <div class="hero-bar">
+    <div class="hero-bar-item">
+      <p class="hbi-label">Location</p>
+      <p class="hbi-value">Fulford, York</p>
+    </div>
+    <div class="hero-bar-item">
+      <p class="hbi-label">Opening Hours</p>
+      <p class="hbi-value">Open until 8 pm today</p>
+    </div>
+    <div class="hero-bar-item">
+      <p class="hbi-label">Contact</p>
+      <p class="hbi-value">07825 270874</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Kitchen Fitting</span><span class="dot">&middot;</span>
+    <span>Cabinet Installation</span><span class="dot">&middot;</span>
+    <span>Worktop Fitting</span><span class="dot">&middot;</span>
+    <span>Utility Rooms</span><span class="dot">&middot;</span>
+    <span>Bespoke Cabinetry</span><span class="dot">&middot;</span>
+    <span>Appliance Integration</span><span class="dot">&middot;</span>
+    <span>Splashbacks &amp; Tiling</span><span class="dot">&middot;</span>
+    <span>Kitchen Renovations</span><span class="dot">&middot;</span>
+    <span>Kitchen Fitting</span><span class="dot">&middot;</span>
+    <span>Cabinet Installation</span><span class="dot">&middot;</span>
+    <span>Worktop Fitting</span><span class="dot">&middot;</span>
+    <span>Utility Rooms</span><span class="dot">&middot;</span>
+    <span>Bespoke Cabinetry</span><span class="dot">&middot;</span>
+    <span>Appliance Integration</span><span class="dot">&middot;</span>
+    <span>Splashbacks &amp; Tiling</span><span class="dot">&middot;</span>
+    <span>Kitchen Renovations</span><span class="dot">&middot;</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-left">
+    <p class="section-label">About Us</p>
+    <h2 class="about-heading">Kitchens<br>fitted <em>right,</em><br>first time.</h2>
+  </div>
+  <div class="about-right">
+    <p>Evolution Joinery is a <strong>York-based kitchen fitting business</strong> operating out of Fulford. We bring a craftsman's approach to every kitchen project, combining precision joinery skills with an eye for the details that make a real difference to how a kitchen looks and functions.</p>
+    <p>Whether you've bought flat-pack units or are investing in a full bespoke kitchen, we treat every install with the same care and professionalism. <strong>Honest pricing, reliable timekeeping, and a finish you can be proud of.</strong></p>
+    <div class="about-badge">
+      <div class="badge-dot"></div>
+      <span>Currently accepting new enquiries</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-top">
+    <h2 class="services-title">What we do</h2>
+    <p class="services-intro">From unit installation to the finishing details, we handle every aspect of your kitchen renovation to a high standard.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-item">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <p class="service-name">Full Kitchen Installation</p>
+      <p class="service-desc">Complete kitchen fitting from start to finish. We handle unit assembly, cabinet installation, plinths, cornices, and every detail in between.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <p class="service-name">Bespoke Cabinetry</p>
+      <p class="service-desc">Handbuilt kitchen cabinetry made precisely to your space. No standard sizing, no off-the-shelf compromises. Built to last and fitted to perfection.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><line x1="5" y1="6" x2="19" y2="6"/><line x1="5" y1="18" x2="19" y2="18"/></svg>
+      </div>
+      <p class="service-name">Worktop Fitting</p>
+      <p class="service-desc">Laminate, solid wood, or stone worktops cut, jointed, and fitted cleanly. Precise templating and tight seams as standard.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+      </div>
+      <p class="service-name">Appliance Integration</p>
+      <p class="service-desc">Ovens, hobs, dishwashers, and integrated fridge-freezers fitted and built in flush to the cabinetry. Neat, seamless, and functional.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M18 3H6a3 3 0 00-3 3v12a3 3 0 003 3h12a3 3 0 003-3V6a3 3 0 00-3-3z"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+      </div>
+      <p class="service-name">Utility Rooms</p>
+      <p class="service-desc">Utility room fitting to match your kitchen or as a standalone project. Built-in storage, plumbing cupboards, and laundry units fitted properly.</p>
+    </div>
+    <div class="service-item">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="service-name">Kitchen Renovations</p>
+      <p class="service-desc">Refreshing or replacing an existing kitchen. We can reuse carcasses, reface doors, or take the whole lot out and start fresh. You decide the scope.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why">
+  <div class="why-left">
+    <p class="section-label" style="color:rgba(184,114,42,0.6);">Why Choose Us</p>
+    <h2>The <em>right</em><br>kitchen<br>fitter.</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-item">
+      <p class="why-item-num">01</p>
+      <p class="why-item-title">Fully Experienced</p>
+      <p class="why-item-desc">Kitchen fitting carried out by an experienced tradesman. No cutting corners, no sending labourers in your place.</p>
+    </div>
+    <div class="why-item">
+      <p class="why-item-num">02</p>
+      <p class="why-item-title">Locally Based</p>
+      <p class="why-item-desc">Based in Fulford, we work across York and the surrounding area. Short travel times, reliable arrival, and real local knowledge.</p>
+    </div>
+    <div class="why-item">
+      <p class="why-item-num">03</p>
+      <p class="why-item-title">Clear Pricing</p>
+      <p class="why-item-desc">Straightforward quotes with no hidden extras. We explain the work upfront so you know exactly what you are paying for.</p>
+    </div>
+    <div class="why-item">
+      <p class="why-item-num">04</p>
+      <p class="why-item-title">Tidy &amp; Respectful</p>
+      <p class="why-item-desc">We work carefully in your home, protect surrounding surfaces, and leave the site clean. Your kitchen is treated with care throughout.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <div>
+      <p class="section-label" style="color:rgba(184,114,42,0.6);">Get in Touch</p>
+      <h2>Let's talk<br>about your<br><em>kitchen.</em></h2>
+      <p>Give us a call or fill in the form and we will get back to you quickly with a free, no-obligation quote for your kitchen project.</p>
+    </div>
+    <div class="contact-details">
+      <div class="contact-detail-row">
+        <span class="cd-label">Phone</span>
+        <a class="cd-value" href="tel:07825270874">07825 270874</a>
+      </div>
+      <div class="contact-detail-row">
+        <span class="cd-label">Address</span>
+        <p class="cd-value-small">13 Low Moor Ave<br>Fulford, York, YO10 4NH</p>
+      </div>
+      <div class="contact-detail-row">
+        <span class="cd-label">Hours</span>
+        <p class="cd-value-small">Open today until 8 pm</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <h3>Request a free quote</h3>
+    <div class="form-row">
+      <div class="field">
+        <label>First Name</label>
+        <input type="text" placeholder="John">
+      </div>
+      <div class="field">
+        <label>Last Name</label>
+        <input type="text" placeholder="Smith">
+      </div>
+    </div>
+    <div class="field">
+      <label>Phone Number</label>
+      <input type="tel" placeholder="07700 000000">
+    </div>
+    <div class="field">
+      <label>Type of Work</label>
+      <select>
+        <option value="" disabled selected>Select a service...</option>
+        <option>Full Kitchen Installation</option>
+        <option>Bespoke Cabinetry</option>
+        <option>Worktop Fitting</option>
+        <option>Appliance Integration</option>
+        <option>Utility Room Fitting</option>
+        <option>Kitchen Renovation / Refresh</option>
+        <option>Other / Not Sure</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Tell us more</label>
+      <textarea rows="4" placeholder="Describe your project, rough size, timescale..."></textarea>
+    </div>
+    <button class="form-btn" onclick="handleSubmit(this)">Send Enquiry</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Evolution Joinery</span>
+  <p>13 Low Moor Ave, Fulford, York YO10 4NH</p>
+  <p>07825 270874</p>
+</footer>
+
+<script>
+  function handleSubmit(btn) {
+    const original = btn.textContent;
+    btn.textContent = 'Enquiry Sent';
+    btn.style.background = 'var(--pine)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
