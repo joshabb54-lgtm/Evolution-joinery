@@ -126,37 +126,30 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 6px;
-    width: 44px;
-    height: 44px;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
     cursor: pointer;
-    background: rgba(201,164,75,0.1);
-    border: 1px solid rgba(201,164,75,0.4);
-    padding: 10px;
+    background: none;
+    border: none;
+    padding: 6px;
     position: relative;
     z-index: 201;
-    transition: background 0.2s, border-color 0.2s;
-  }
-
-  .nav-hamburger:hover {
-    background: rgba(201,164,75,0.2);
-    border-color: rgba(201,164,75,0.7);
   }
 
   .nav-hamburger span {
     display: block;
-    height: 2px;
-    background: var(--cream);
+    height: 1.5px;
+    background: #c9a44b;
     transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
     transform-origin: center;
-    border-radius: 1px;
   }
 
-  .nav-hamburger span:nth-child(2) { width: 70%; margin-left: auto; }
+  .nav-hamburger span:nth-child(2) { width: 65%; margin-left: auto; }
 
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
   /* DROPDOWN MENU */
   .nav-menu {

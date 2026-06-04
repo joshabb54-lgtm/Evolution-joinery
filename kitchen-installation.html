@@ -18,12 +18,12 @@
   .nav-right{display:flex;align-items:center;gap:1.5rem;position:relative;z-index:201;}
   .nav-call{display:flex;align-items:center;gap:0.55rem;background:none;border:1px solid rgba(201,164,75,0.45);color:#c9a44b;font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:0.55rem 1.1rem;text-decoration:none;transition:border-color 0.2s,color 0.2s,background 0.2s;}.nav-call:hover{border-color:#c9a44b;background:rgba(201,164,75,0.08);}.nav-call-icon{width:14px;height:14px;flex-shrink:0;stroke:#c9a44b;}.nav-call-text{display:inline;}
   
-  .nav-hamburger{display:flex;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px;cursor:pointer;background:rgba(201,164,75,0.1);border:1px solid rgba(201,164,75,0.4);padding:10px;position:relative;z-index:201;transition:background 0.2s,border-color 0.2s;}
-  .nav-hamburger span{display:block;height:2px;background:#f4f7fb;transition:transform 0.3s ease,opacity 0.3s ease,width 0.3s ease;transform-origin:center;border-radius:1px;}
-  .nav-hamburger span:nth-child(2){width:70%;margin-left:auto;}
-  .nav-hamburger.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  .nav-hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;background:none;border:none;padding:6px;position:relative;z-index:201;}
+  .nav-hamburger span{display:block;height:1.5px;background:#c9a44b;transition:transform 0.3s ease,opacity 0.3s ease,width 0.3s ease;transform-origin:center;}
+  .nav-hamburger span:nth-child(2){width:65%;margin-left:auto;}
+  .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
   .nav-hamburger.open span:nth-child(2){opacity:0;width:0;}
-  .nav-hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+  .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
   .nav-menu{position:fixed;top:0;left:0;right:0;background:rgba(2,8,21,0.99);backdrop-filter:blur(16px);z-index:199;padding:6rem 3.5rem 3rem;display:flex;flex-direction:column;gap:0;transform:translateY(-100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);border-bottom:1px solid rgba(201,164,75,0.3);}
   .nav-menu.open{transform:translateY(0);}
   .nav-menu-link{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:300;color:rgba(244,247,251,0.45);text-decoration:none;letter-spacing:0.02em;padding:0.6rem 0;border-bottom:1px solid rgba(201,164,75,0.12);transition:color 0.2s;display:flex;align-items:center;gap:1rem;}
