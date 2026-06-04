@@ -450,7 +450,7 @@
 
   .about-heading {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3.2rem;
+    font-size: 2.55rem;
     font-weight: 300;
     line-height: 1.1;
     color: var(--cream);
@@ -470,7 +470,7 @@
   }
 
   .about-right p {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 300;
     color: #cbd5e1;
     line-height: 1.8;
@@ -479,6 +479,46 @@
   .about-right p strong {
     color: var(--cream);
     font-weight: 500;
+  }
+
+  .about-bullets {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 2rem;
+  }
+
+  .about-bullets li {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: #94a3b8;
+    line-height: 1.6;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .about-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 6px;
+    height: 6px;
+    background: var(--pine);
+    border-radius: 50%;
+  }
+
+  .about-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--pine);
+    line-height: 1.5;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(201,164,75,0.2);
   }
 
   .about-badge {
@@ -944,15 +984,23 @@
 <section class="about">
   <div class="about-left">
     <p class="section-label">About Us</p>
-    <h2 class="about-heading">Kitchens<br>fitted <em>right,</em><br>first time.</h2>
+    <h2 class="about-heading">From Design<br>to <em>Reality.</em></h2>
   </div>
   <div class="about-right">
-    <p>Evolution Joinery is a <strong>York-based kitchen fitting business</strong> operating out of Fulford. We bring a craftsman's approach to every kitchen project, combining precision joinery skills with an eye for the details that make a real difference to how a kitchen looks and functions.</p>
-    <p>Whether you've bought flat-pack units or are investing in a full bespoke kitchen, we treat every install with the same care and professionalism. <strong>Honest pricing, reliable timekeeping, and a finish you can be proud of.</strong></p>
-    <div class="about-badge">
-      <div class="badge-dot"></div>
-      <span>Currently accepting new enquiries</span>
-    </div>
+    <p>With over <strong>20 years of experience</strong>, Evolution Joinery specialises in creating exceptional kitchens, taking your project from initial design and planning through to completion. We manage every stage of the process, ensuring a seamless experience and a finish of the highest quality.</p>
+    <p>Our expertise extends far beyond kitchens. We cover all aspects of building and joinery — home extensions, garage conversions, loft conversions, bespoke joinery, staircases, and complete home renovations. Whether you're looking to maximise space, add value to your property, or create something completely unique, our skilled team delivers outstanding craftsmanship and attention to detail throughout.</p>
+    <p>We combine <strong>traditional workmanship with modern building techniques</strong> to provide reliable, professional service and results that stand the test of time.</p>
+    <ul class="about-bullets">
+      <li>Over 20 years of industry experience</li>
+      <li>Kitchens from design to reality</li>
+      <li>Complete building and joinery service</li>
+      <li>Extensions, loft and garage conversions</li>
+      <li>Bespoke joinery and staircases</li>
+      <li>Fully managed projects, start to finish</li>
+      <li>High-quality workmanship throughout</li>
+      <li>Friendly, reliable and professional team</li>
+    </ul>
+    <p class="about-tagline">Transforming homes through expert craftsmanship, thoughtful design, and exceptional quality.</p>
   </div>
 </section>
 
