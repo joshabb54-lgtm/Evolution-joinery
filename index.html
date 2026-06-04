@@ -8,14 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0A1628;
-    --pine: #B8722A;
-    --pine-light: #CF8A3E;
-    --pine-pale: #EEE8DF;
-    --cream: #F4F0EA;
-    --warm-grey: #7A7A8C;
-    --stone: #C8C2B8;
-    --gold: #B8722A;
+    --ink: #020815;
+    --ink-mid: #07172c;
+    --pine: #c9a44b;
+    --pine-light: #d9b86a;
+    --pine-pale: #0d1f38;
+    --cream: #f4f7fb;
+    --warm-grey: #94a3b8;
+    --stone: rgba(201,164,75,0.25);
+    --gold: #c9a44b;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,8 +24,8 @@
 
   body {
     font-family: 'Outfit', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
+    background: #020815;
+    color: var(--cream);
     overflow-x: hidden;
   }
 
@@ -37,9 +38,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(10,22,40,0.96);
+    background: rgba(2,8,21,0.97);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(184,114,42,0.2);
+    border-bottom: 1px solid rgba(201,164,75,0.3);
   }
 
   .nav-brand {
@@ -136,7 +137,7 @@
   .nav-menu {
     position: fixed;
     top: 0; left: 0; right: 0;
-    background: rgba(10,22,40,0.98);
+    background: rgba(2,8,21,0.99);
     backdrop-filter: blur(16px);
     z-index: 199;
     padding: 6rem 3.5rem 3rem;
@@ -145,7 +146,7 @@
     gap: 0;
     transform: translateY(-100%);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    border-bottom: 1px solid rgba(184,114,42,0.2);
+    border-bottom: 1px solid rgba(201,164,75,0.3);
   }
 
   .nav-menu.open {
@@ -156,11 +157,11 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 300;
-    color: rgba(244,240,234,0.5);
+    color: rgba(244,247,251,0.45);
     text-decoration: none;
     letter-spacing: 0.02em;
     padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(184,114,42,0.1);
+    border-bottom: 1px solid rgba(201,164,75,0.12);
     transition: color 0.2s;
     display: flex;
     align-items: center;
@@ -419,12 +420,12 @@
   .about {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background: #F2EEE8;
+    background: #07172c;
   }
 
   .about-left {
     padding: 6rem 4rem;
-    border-right: 1px solid var(--stone);
+    border-right: 1px solid rgba(201,164,75,0.2);
   }
 
   .section-label {
@@ -452,7 +453,7 @@
     font-size: 3.2rem;
     font-weight: 300;
     line-height: 1.1;
-    color: var(--ink);
+    color: var(--cream);
   }
 
   .about-heading em {
@@ -471,12 +472,12 @@
   .about-right p {
     font-size: 0.95rem;
     font-weight: 300;
-    color: var(--warm-grey);
+    color: #cbd5e1;
     line-height: 1.8;
   }
 
   .about-right p strong {
-    color: var(--ink);
+    color: var(--cream);
     font-weight: 500;
   }
 
@@ -505,7 +506,7 @@
 
   /* SERVICES */
   .services {
-    background: var(--pine-pale);
+    background: #020815;
     padding: 6rem 4rem;
   }
 
@@ -521,83 +522,63 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 3.5rem;
     font-weight: 300;
-    color: var(--ink);
+    color: var(--cream);
     line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
   }
 
   .services-intro {
     max-width: 340px;
     font-size: 0.9rem;
     font-weight: 300;
-    color: var(--warm-grey);
+    color: #cbd5e1;
     line-height: 1.7;
   }
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    background: rgba(184,114,42,0.15);
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--pine);
+    margin-top: 2.5rem;
   }
 
   .service-item {
-    background: var(--pine-pale);
-    padding: 2.5rem;
+    background: #07172c;
+    padding: 2.5rem 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     transition: background 0.25s;
     position: relative;
     overflow: hidden;
+    min-height: 230px;
   }
 
-  .service-item::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    height: 2px;
-    width: 0;
-    background: var(--pine);
-    transition: width 0.3s ease;
-  }
+  .service-item:hover { background: #0d2040; }
 
-  .service-item:hover { background: white; }
-  .service-item:hover::after { width: 100%; }
-
-  .service-icon {
-    width: 36px; height: 36px;
-    background: var(--pine);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .service-icon svg {
-    width: 18px; height: 18px;
-    stroke: var(--cream);
-    fill: none;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
+  .service-icon { display: none; }
 
   .service-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--cream);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
   }
 
   .service-desc {
     font-size: 0.88rem;
     font-weight: 300;
-    color: var(--warm-grey);
+    color: #94a3b8;
     line-height: 1.7;
   }
 
   /* WHY US */
   .why {
-    background: var(--ink);
+    background: #07172c;
     padding: 6rem 4rem;
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -630,7 +611,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.5rem;
     font-weight: 300;
-    color: var(--pine-light);
+    color: var(--pine);
     line-height: 1;
     margin-bottom: 0.6rem;
   }
@@ -646,7 +627,7 @@
   .why-item-desc {
     font-size: 0.83rem;
     font-weight: 300;
-    color: rgba(245,240,232,0.5);
+    color: #94a3b8;
     line-height: 1.7;
   }
 
@@ -657,12 +638,12 @@
   }
 
   .contact-info {
-    background: var(--ink);
+    background: #020815;
     padding: 6rem 4rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border-right: 1px solid rgba(184,114,42,0.2);
+    border-right: 1px solid rgba(201,164,75,0.2);
   }
 
   .contact-info h2 {
@@ -681,7 +662,7 @@
   .contact-info p {
     font-size: 0.9rem;
     font-weight: 300;
-    color: rgba(245,240,232,0.65);
+    color: #94a3b8;
     line-height: 1.75;
     max-width: 340px;
     margin-top: 1.5rem;
@@ -704,7 +685,7 @@
     font-size: 0.65rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(245,240,232,0.4);
+    color: rgba(244,247,251,0.4);
     font-weight: 400;
   }
 
@@ -723,12 +704,12 @@
     font-family: 'Outfit', sans-serif;
     font-size: 0.88rem;
     font-weight: 300;
-    color: rgba(245,240,232,0.65);
+    color: #94a3b8;
     line-height: 1.5;
   }
 
   .contact-form {
-    background: var(--cream);
+    background: #07172c;
     padding: 6rem 4rem;
     display: flex;
     flex-direction: column;
@@ -740,7 +721,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.8rem;
     font-weight: 400;
-    color: var(--ink);
+    color: var(--cream);
     margin-bottom: 0.25rem;
   }
 
@@ -767,9 +748,9 @@
   .field input,
   .field textarea,
   .field select {
-    background: white;
-    border: 1px solid var(--stone);
-    color: var(--ink);
+    background: #020815;
+    border: 1px solid rgba(201,164,75,0.25);
+    color: var(--cream);
     padding: 0.85rem 1rem;
     font-family: 'Outfit', sans-serif;
     font-size: 0.88rem;
@@ -788,17 +769,17 @@
 
   .field input::placeholder,
   .field textarea::placeholder {
-    color: var(--stone);
+    color: rgba(148,163,184,0.5);
   }
 
   .form-btn {
-    background: var(--ink);
-    color: var(--cream);
+    background: var(--pine);
+    color: #020815;
     border: none;
     padding: 1rem 2.2rem;
     font-family: 'Outfit', sans-serif;
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     cursor: pointer;
@@ -806,30 +787,30 @@
     transition: background 0.2s;
   }
 
-  .form-btn:hover { background: var(--pine); }
+  .form-btn:hover { background: var(--pine-light); }
 
   /* FOOTER */
   footer {
-    background: #060D1A;
+    background: #020815;
     padding: 2rem 3.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
-    border-top: 1px solid rgba(184,114,42,0.15);
+    border-top: 1px solid rgba(201,164,75,0.3);
   }
 
   .footer-brand {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem;
-    color: rgba(184,114,42,0.6);
+    color: var(--pine);
     letter-spacing: 0.06em;
   }
 
   footer p {
     font-size: 0.75rem;
-    color: rgba(244,240,234,0.25);
+    color: #94a3b8;
     letter-spacing: 0.05em;
   }
 
@@ -851,7 +832,7 @@
     .about-right { padding: 3rem 1.5rem; }
     .services { padding: 4rem 1.5rem; }
     .services-top { flex-direction: column; align-items: flex-start; }
-    .services-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
     .why { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2.5rem; }
     .why-grid { grid-template-columns: 1fr; }
     .contact { grid-template-columns: 1fr; }
@@ -907,10 +888,10 @@
   <div class="hero-main">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
-      <span>Kitchen Fitting Specialists, Fulford, York</span>
+      <span>Joinery &amp; Kitchen Specialists, Fulford, York</span>
     </div>
-    <h1 class="hero-title">Trusted<br>Kitchen<br><em>Renovater</em><br>based in York</h1>
-    <p class="hero-desc">Kitchen fitting and renovation for homes across York and the surrounding area. From full kitchen installs to bespoke cabinetry, fitted to a standard you can see.</p>
+    <h1 class="hero-title">Kitchen fitters,<br>extensions &amp;<br><em>general joinery</em><br>based in Fulford, York</h1>
+    <p class="hero-desc">Premium building and joinery services across York and the surrounding area. Kitchens, extensions, loft conversions, staircases and bespoke joinery — delivered with precision and care.</p>
     <div class="hero-ctas">
       <a class="btn-pine" href="#contact">Request a Quote</a>
       <a class="btn-ghost" href="#services">See our work</a>
@@ -937,20 +918,24 @@
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span>Kitchen Fitting</span><span class="dot">&middot;</span>
-    <span>Cabinet Installation</span><span class="dot">&middot;</span>
+    <span>Extensions</span><span class="dot">&middot;</span>
+    <span>Loft Conversions</span><span class="dot">&middot;</span>
+    <span>Bespoke Joinery</span><span class="dot">&middot;</span>
+    <span>Staircases</span><span class="dot">&middot;</span>
     <span>Worktop Fitting</span><span class="dot">&middot;</span>
-    <span>Utility Rooms</span><span class="dot">&middot;</span>
     <span>Bespoke Cabinetry</span><span class="dot">&middot;</span>
+    <span>Utility Rooms</span><span class="dot">&middot;</span>
     <span>Appliance Integration</span><span class="dot">&middot;</span>
-    <span>Splashbacks &amp; Tiling</span><span class="dot">&middot;</span>
     <span>Kitchen Renovations</span><span class="dot">&middot;</span>
     <span>Kitchen Fitting</span><span class="dot">&middot;</span>
-    <span>Cabinet Installation</span><span class="dot">&middot;</span>
+    <span>Extensions</span><span class="dot">&middot;</span>
+    <span>Loft Conversions</span><span class="dot">&middot;</span>
+    <span>Bespoke Joinery</span><span class="dot">&middot;</span>
+    <span>Staircases</span><span class="dot">&middot;</span>
     <span>Worktop Fitting</span><span class="dot">&middot;</span>
-    <span>Utility Rooms</span><span class="dot">&middot;</span>
     <span>Bespoke Cabinetry</span><span class="dot">&middot;</span>
+    <span>Utility Rooms</span><span class="dot">&middot;</span>
     <span>Appliance Integration</span><span class="dot">&middot;</span>
-    <span>Splashbacks &amp; Tiling</span><span class="dot">&middot;</span>
     <span>Kitchen Renovations</span><span class="dot">&middot;</span>
   </div>
 </div>
@@ -974,51 +959,35 @@
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="services-top">
-    <h2 class="services-title">What we do</h2>
-    <p class="services-intro">From unit installation to the finishing details, we handle every aspect of your kitchen renovation to a high standard.</p>
+    <p class="section-label" style="color:var(--pine);">Our Services</p>
+    <h2 class="services-title">What We Do</h2>
+    <p class="services-intro">Premium building and joinery for homes across York. Every project delivered with precision, care and a finish worth talking about.</p>
   </div>
   <div class="services-grid">
+    <a class="service-item" href="bespoke-joinery.html" style="text-decoration:none;">
+      <div class="service-icon"></div>
+      <p class="service-name">Bespoke Joinery</p>
+      <p class="service-desc">Made-to-measure joinery for refined, functional interiors. Built to your exact space and specification.</p>
+    </a>
     <a class="service-item" href="kitchen-installation.html" style="text-decoration:none;">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="1"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-      </div>
-      <p class="service-name">Full Kitchen Installation</p>
-      <p class="service-desc">Complete kitchen fitting from start to finish. We handle unit assembly, cabinet installation, plinths, cornices, and every detail in between.</p>
+      <div class="service-icon"></div>
+      <p class="service-name">Fitted Kitchens</p>
+      <p class="service-desc">Luxury kitchen fitting with clean lines and premium finishes. From flat-pack to fully bespoke.</p>
     </a>
-    <a class="service-item" href="bespoke-cabinetry.html" style="text-decoration:none;">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </div>
-      <p class="service-name">Bespoke Cabinetry</p>
-      <p class="service-desc">Handbuilt kitchen cabinetry made precisely to your space. No standard sizing, no off-the-shelf compromises. Built to last and fitted to perfection.</p>
+    <a class="service-item" href="loft-conversions.html" style="text-decoration:none;">
+      <div class="service-icon"></div>
+      <p class="service-name">Loft Conversions</p>
+      <p class="service-desc">Transform unused roof space into beautiful, functional living space — fully fitted and finished.</p>
     </a>
-    <a class="service-item" href="worktop-fitting.html" style="text-decoration:none;">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><line x1="5" y1="6" x2="19" y2="6"/><line x1="5" y1="18" x2="19" y2="18"/></svg>
-      </div>
-      <p class="service-name">Worktop Fitting</p>
-      <p class="service-desc">Laminate, solid wood, or stone worktops cut, jointed, and fitted cleanly. Precise templating and tight seams as standard.</p>
+    <a class="service-item" href="staircases.html" style="text-decoration:none;">
+      <div class="service-icon"></div>
+      <p class="service-name">Staircases</p>
+      <p class="service-desc">Statement staircases crafted with accuracy and style. New builds, refurbishments and replacements.</p>
     </a>
-    <a class="service-item" href="appliance-integration.html" style="text-decoration:none;">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
-      </div>
-      <p class="service-name">Appliance Integration</p>
-      <p class="service-desc">Ovens, hobs, dishwashers, and integrated fridge-freezers fitted and built in flush to the cabinetry. Neat, seamless, and functional.</p>
-    </a>
-    <a class="service-item" href="utility-rooms.html" style="text-decoration:none;">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><path d="M18 3H6a3 3 0 00-3 3v12a3 3 0 003 3h12a3 3 0 003-3V6a3 3 0 00-3-3z"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
-      </div>
-      <p class="service-name">Utility Rooms</p>
-      <p class="service-desc">Utility room fitting to match your kitchen or as a standalone project. Built-in storage, plumbing cupboards, and laundry units fitted properly.</p>
-    </a>
-    <a class="service-item" href="kitchen-renovation.html" style="text-decoration:none;">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      </div>
-      <p class="service-name">Kitchen Renovations</p>
-      <p class="service-desc">Refreshing or replacing an existing kitchen. We can reuse carcasses, reface doors, or take the whole lot out and start fresh. You decide the scope.</p>
+    <a class="service-item" href="extensions.html" style="text-decoration:none;">
+      <div class="service-icon"></div>
+      <p class="service-name">Extensions</p>
+      <p class="service-desc">High-quality extensions that add space, value and impact. Expertly built and finished throughout.</p>
     </a>
   </div>
 </section>
